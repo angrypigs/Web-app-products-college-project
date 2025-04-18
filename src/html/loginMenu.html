@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logowanie</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="scripts/loginMenu.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="login-register">
+      <h1>Rejestracja</h1>
+      <form id="registerForm">
+        <label for="username">Nazwa użytkownika</label>
+        <input type="text" id="registerUsername" name="username" required>
+        <label for="password">Hasło</label>
+        <input type="password" id="registerPassword" name="password" required>
+        <button type="submit">Zarejestruj się</button>
+      </form>
+      <h1>Logowanie</h1>
+      <form id="loginForm">
+        <label for="username">Nazwa użytkownika</label>
+        <input type="text" id="loginUsername" name="username" required>
+        <label for="password">Hasło</label>
+        <input type="password" id="loginPassword" name="password" required>
+        <button type="submit">Zaloguj</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
