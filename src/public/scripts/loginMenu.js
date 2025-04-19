@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log("lol")
     $('#registerForm').submit(function (e) {
       e.preventDefault();
       const username = $('#registerUsername').val();
@@ -21,10 +20,7 @@ $(document).ready(function () {
         }
       });
     });
-  });
 
-$(document).ready(function () {
-    console.log("lol2")
     $('#loginForm').submit(function (e) {
         e.preventDefault();
         const username = $('#loginUsername').val();

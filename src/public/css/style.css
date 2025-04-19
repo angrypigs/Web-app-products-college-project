@@ -6,6 +6,11 @@ body {
     font-family:Arial, Helvetica, sans-serif;
 }
 
+h1, h2 {
+    text-align: center;
+}
+
+
 #container {
     position: absolute;
     top: 0;
@@ -13,6 +18,35 @@ body {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(45deg, rgb(0, 30, 42), rgb(0, 72, 111));
+}
+
+#header {
+    height: 10vh;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(35, 35, 35), rgb(66, 66, 66));
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+#header h1 {
+    flex-grow: 1;
+    margin: 0;
+}
+
+#logout-btn {
+    font-size: 20px;
+    padding: 10px 16px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+  
+#logout-btn:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #login-register {
@@ -61,8 +95,3 @@ form button {
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
-h1 {
-    font-size: 40px;
-    text-align: center;
-}

@@ -7,4 +7,9 @@ router.get('/', verifyToken, (req, res) => {
     res.sendFile(path.join(__dirname, '../html/home.html'));
 });
 
+router.post('/logout', (req, res) => {
+    res.clearCookie('token');
+    res.sendFile(path.join(__dirname, '../html/loginMenu.html'));
+});
+
 module.exports = router;

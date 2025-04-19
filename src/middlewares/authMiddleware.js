@@ -3,7 +3,7 @@ const SECRET = 'tajnyklucz';
 
 function verifyToken(req, res, next) {
   const token = req.cookies.token;
-  if (!token) return res.status(403).json({ message: 'Brak tokena' });
+  if (!token) return res.redirect('/403.html?msg=Brak+tokena');
 
   jwt.verify(token, SECRET, (err, decoded) => {
     if (err) return res.status(403).json({ message: 'Nieprawidłowy token' });
