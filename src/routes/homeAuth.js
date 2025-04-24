@@ -12,4 +12,8 @@ router.post('/logout', (req, res) => {
     res.sendFile(path.join(__dirname, '../html/loginMenu.html'));
 });
 
+router.get('/new-product', verifyToken, (req, res) => {
+    res.sendFile(path.join(__dirname, '../html/newProduct.html'));
+});
+
 module.exports = router;

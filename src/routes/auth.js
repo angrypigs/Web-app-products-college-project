@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const path = require('path');
+const { verifyToken } = require('../middlewares/authMiddleware');
 const router = express.Router();
 
 const SECRET = 'tajnyklucz';
@@ -27,11 +28,15 @@ router.post('/login', async (req, res) => {
   const valid = await bcrypt.compare(password, user.password);
   if (!valid) return res.status(401).json({ message: 'Nieprawidłowe hasło' });
 
-  const token = jwt.sign({ id: user.id, role: user.role }, SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, SECRET, { expiresIn: '1h' });
 
   console.log(`User ${username} logged in`);
   res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
   res.sendFile(path.join(__dirname, '../html', 'home.html'));
+});
+
+router.get('/me', verifyToken, (req, res) => {
+  res.json({ username: req.user.username, role: req.user.role });
 });
 
 module.exports = router;

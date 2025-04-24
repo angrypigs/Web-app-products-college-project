@@ -1,0 +1,40 @@
+#logout-btn {
+    position: absolute;
+    right: 20px;
+}
+
+#user-name {
+    position: absolute;
+    left: 20px;
+}
+
+#products-list {
+    padding: 20px;
+}
+
+.productsListProduct {
+    min-width: 200px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    background: #1e2a38;
+    color: #fff;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.productsListProductRemove {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    background-color: rgba(166, 0, 0, 0.7) !important;
+    aspect-ratio: 1 / 1;
+}

@@ -9,11 +9,7 @@ $(document).ready(function () {
         contentType: 'application/json',
         data: JSON.stringify({ username, password }),
         success: function (data) {
-          if (data.token) {
-            localStorage.setItem('token', data.token);
-          } else {
-            alert('Błąd rejestracji');
-          }
+          alert("Zarejestrowano pomyślnie")
         },
         error: function (xhr, status, error) {
           console.error('Błąd rejestracji:', error);
