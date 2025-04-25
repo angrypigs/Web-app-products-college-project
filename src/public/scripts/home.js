@@ -1,3 +1,8 @@
+let page = 1;
+const limit = 6;
+let isLastPage = false;
+let isFirstPage = true;
+
 $(document).ready(function () {
   $(document).on('click', '#logout-btn', function () {
     $.ajax({
@@ -13,7 +18,28 @@ $(document).ready(function () {
   });
 
   $(document).on('click', '#new-product-btn', function () {
-    window.location.href = '/home/new-product';
+      window.location.href = '/home/new-product';
+  });
+
+  $(document).on('click', '.productsListProductRemove', function () {
+    const id = $(this).data('id');
+    if (confirm("Czy na pewno chcesz usunąć ten produkt?")) {
+      $.ajax({
+        url: '/product/delete',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({id: parseInt(id)}),
+        success: function (data) {
+            if (data.success) window.location.href = "/home";
+            else {
+                console.log('Błąd:', data.message)
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Błąd logowania:', error);
+        }
+      });
+    }
   });
 
   let is_admin = false;
@@ -32,22 +58,49 @@ $(document).ready(function () {
       console.error('Błąd w pobieraniu produktów', error);
     }
   });
+
+  $(document).on('click', '#filter-refresh', function () {
+    load_products(is_admin);
+  });
+
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Enter') {
+      load_products(is_admin);
+    }
+  });
+
+  $(document).on('click', '#pagination-left', function () {
+    page = Math.max(page - 1, 1);
+    $('#pagination-index').text('' + page);
+    load_products(is_admin);
+  });
+
+  $(document).on('click', '#pagination-right', function () {
+    page += 1;
+    $('#pagination-index').text('' + page);
+    load_products(is_admin);
+  });
   
 });
 
 
 function load_products(is_admin) {
   $('#products-list').empty();
+  const phrase = $('#filter-name').val();
   $.ajax({
-    url: '/product',
+    url: `/product?phrase=${phrase}&page=${page}&limit=${limit}`,
     method: 'GET',
     xhrFields: {
       withCredentials: true
     },
-    success: function(products) {
-      products.forEach(p => {
-        let product = `<div class="productsListProduct"><p>${p.title}</p><p>${p.description}</p>`
-        if (is_admin) product += '<div class="productsListProductRemove button">X</div>'
+    success: function(res) {
+      isFirstPage = res.isFirstPage;
+      isLastPage = res.isLastPage;
+      $('#pagination-left').css('display', (isFirstPage) ? 'none' : 'block')
+      $('#pagination-right').css('display', (isLastPage) ? 'none' : 'block')
+      res.products.forEach(p => {
+        let product = `<div class="productsListProduct"><p>${p.title}</p>`
+        if (is_admin) product += `<div class="productsListProductRemove button" data-id="${p.id}">X</div>`;
         $('#products-list').append(`${product}</div>`);
       });
     },
@@ -56,3 +109,5 @@ function load_products(is_admin) {
     }
   });
 }
+
+ 
