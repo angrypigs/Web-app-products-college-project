@@ -39,4 +39,29 @@ router.get('/me', verifyToken, (req, res) => {
   res.json({ username: req.user.username, role: req.user.role });
 });
 
+router.get('/list', async (req, res) => {
+  try {
+      const users = await User.findAll({
+      });
+      res.json({users});
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Błąd serwera' });
+    }
+});
+
+router.post('/update', async (req, res) => {
+  const { ids, role } = req.body;
+  try {
+      const users = await User.update(
+        {role: role},
+        {where: {id: ids}}
+      )
+      res.json({success: true});
+    } catch (error) {
+      console.error(error);
+      res.json({ success: false, message: 'Błąd serwera' });
+    }
+});
+
 module.exports = router;

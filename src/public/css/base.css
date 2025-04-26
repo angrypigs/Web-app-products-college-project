@@ -4,6 +4,7 @@ body {
     box-sizing: border-box;
     color: aliceblue;
     font-family:Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
 h1, h2 {
@@ -16,12 +17,15 @@ h1, h2 {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    overflow-x: hidden;
     background: linear-gradient(45deg, rgb(0, 30, 42), rgb(0, 72, 111));
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #header {
-    height: 10vh;
+    height: var(--header-height);
     width: 100%;
     background: linear-gradient(90deg, rgb(18, 18, 18), rgb(38, 38, 38));
     display: flex;
@@ -43,6 +47,16 @@ h1, h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.main-block-style {
+    font-size: 20px;
+    background: var(--block-color);
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px 16px;
+    text-align: center;
 }
 
 form {

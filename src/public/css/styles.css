@@ -1,3 +1,8 @@
+:root {
+    --block-color: linear-gradient(90deg, rgb(18, 18, 18), rgb(38, 38, 38));
+    --header-height: 10vh;
+}
+
 #login-back {
     width: auto;
     position: relative;
@@ -104,6 +109,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .comment {
@@ -131,5 +137,55 @@
     outline: none;
     margin-bottom: 20px;
     color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#admin-panel-main {
+    box-sizing: border-box;
+    padding: 30px;
+    height: 90vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    grid-template-rows: 1fr;
+    grid-template-areas: "users categories .";
+    gap: 30px;
+}
+
+#admin-panel-main > div {
+    justify-content: left;
+    gap: 10px;
+}
+
+#admin-panel-main h2 {
+    margin-bottom: 0;
+}
+
+#admin-panel-user-edit {grid-area: users;}
+#admin-panel-category-edit {grid-area: categories;}
+
+#admin-panel-user-picker {
+    width: 80%;
+    height: 30%;
+    overflow-y: scroll;
+    background-color: rgb(81, 81, 81, 0.7);
+    padding: 20px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#admin-panel-user-picker > div {
+    width: 100%;
+    background-color: rgba(144, 144, 144);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#admin-panel-user-picker input {
+    width: 40px;
+    height: 40px;
 }

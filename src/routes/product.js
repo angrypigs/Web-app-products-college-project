@@ -7,7 +7,6 @@ const { Op } = require('sequelize');
 const { verifyToken, requireAdmin } = require('../middlewares/authMiddleware');
 const router = express.Router();
 
-// Logowanie
 router.get('/', async (req, res) => {
   const phrase = req.query.phrase || '';
   const page = parseInt(req.query.page) || 1;

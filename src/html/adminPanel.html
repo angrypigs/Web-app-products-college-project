@@ -16,8 +16,40 @@
       <h1>Panel admina</h1>
       <div id="home-btn" class="button">Strona główna</div>
     </div>
-    <div class="main-block">
-      
+    <div id="admin-panel-main">
+      <div id="admin-panel-user-edit" class="main-block main-block-style">
+        <h2>Edycja użytkowników</h2>
+        <div id="admin-panel-user-picker">
+
+        </div>
+        <label for="admin-panel-user-perm">Wybierz uprawnienia</label>
+        <select id="admin-panel-user-perm">
+          <option value="user">Zwykły</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div id="admin-panel-user-confirm" class="button">Zmień</div>
+      </div>
+      <div id="admin-panel-category-edit" class="main-block main-block-style">
+        <h2>Kategorie</h2>
+        <h3>Dodawanie</h3>
+        <label for="admin-panel-category-new-text">Nazwa</label>
+        <input type="text" id="admin-panel-category-new-text">
+        <div id="admin-panel-category-new-confirm" class="button">Dodaj kategorię</div>
+        <h3>Zmiana nazwy</h3>
+        <label for="admin-panel-category-update-picker">Wybierz kategorię do zmiany</label>
+        <select id="admin-panel-category-update-picker">
+
+        </select>
+        <label for="admin-panel-category-update-text">Nowa nazwa</label>
+        <input type="text" id="admin-panel-category-update-text">
+        <div id="admin-panel-category-update-confirm" class="button">Zmień nazwę</div>
+        <h3>Usuwanie kategorii</h3>
+        <label for="admin-panel-category-delete-picker">Wybierz kategorię do usunięcia</label>
+        <select id="admin-panel-category-delete-picker">
+
+        </select>
+        <div id="admin-panel-category-delete-confirm" class="button">Usuń kategorię</div>
+      </div>
     </div>
   </div>
 </body>

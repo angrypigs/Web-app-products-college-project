@@ -11,6 +11,7 @@ const authRoutes = require('./src/routes/auth');
 const commentRoutes = require('./src/routes/comment');
 const productRoutes = require('./src/routes/product');
 const adminRoutes = require('./src/routes/admin');
+const categoryRoutes = require('./src/routes/category');
 
 
 
@@ -29,6 +30,7 @@ app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
 app.use('/comment', commentRoutes);
 app.use('/admin', adminRoutes);
+app.use('/category', categoryRoutes);
 
 app.use('/error', (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
