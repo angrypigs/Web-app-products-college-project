@@ -4,11 +4,13 @@ const cors = require('cors');
 const path = require('path');
 
 const sequelize = require('./src/models/index');
-const User = require('./src/models/user');
+const User = require('./src/models/User');
 const relations = require('./src/models/relations')
 const homeRoutes = require('./src/routes/homeAuth');
 const authRoutes = require('./src/routes/auth');
+const commentRoutes = require('./src/routes/comment');
 const productRoutes = require('./src/routes/product');
+const adminRoutes = require('./src/routes/admin');
 
 
 
@@ -25,6 +27,13 @@ app.use((req, res, next) => {
 app.use('/home', homeRoutes);
 app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
+app.use('/comment', commentRoutes);
+app.use('/admin', adminRoutes);
+
+app.use('/error', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendFile(path.join(__dirname, 'src/html', 'error.html'));
+});
 
 app.use(express.static(path.join(__dirname, 'src/public')));
 

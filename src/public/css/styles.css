@@ -1,4 +1,14 @@
-#logout-btn {
+#login-back {
+    width: auto;
+    position: relative;
+}
+
+#admin-btn {
+    position: absolute;
+    right: 200px;
+}
+
+#logout-btn, #home-btn {
     position: absolute;
     right: 20px;
 }
@@ -25,6 +35,7 @@
     background: #1e2a38;
     color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    cursor: pointer;
     
     display: flex;
     flex-direction: row;
@@ -38,6 +49,17 @@
     width: 40px;
     background-color: rgba(166, 0, 0, 0.7) !important;
     aspect-ratio: 1 / 1;
+}
+
+.productsListProductRemove:hover {
+    background-color: rgba(190, 0, 0, 0.7) !important;
+}
+
+#home-bottom {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 #pagination-box {
@@ -75,4 +97,39 @@
     border-left: 3px solid rgb(0, 0, 0);
     border-top: 3px solid rgb(0, 0, 0);
     background: linear-gradient(90deg, rgb(18, 18, 18), rgb(38, 38, 38));
+}
+
+#product-comments-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment {
+    min-width: 500px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: linear-gradient(90deg, rgba(5, 0, 51, 0.5), rgba(53, 46, 115, 0.5));
+    outline: none;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.comment p {
+    text-align: center;
+}
+
+#product-info > p {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid black;
+    outline: none;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }

@@ -16,4 +16,8 @@ router.get('/new-product', verifyToken, (req, res) => {
     res.sendFile(path.join(__dirname, '../html/newProduct.html'));
 });
 
+router.get('/product', verifyToken, (req, res) => {
+    res.sendFile(path.join(__dirname, '../html/productPage.html'));
+});
+
 module.exports = router;

@@ -95,6 +95,7 @@ form button {
     transition: box-shadow 0.2s ease;
     padding: 10px 16px;
     width: auto;
+    text-align: center;
 }
 
 .button:hover {

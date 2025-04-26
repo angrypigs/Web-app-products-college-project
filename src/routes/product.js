@@ -1,5 +1,7 @@
 const express = require('express');
 const Product = require('../models/Product');
+const Comment = require('../models/Comment');
+const User = require('../models/User');
 const path = require('path');
 const { Op } = require('sequelize');
 const { verifyToken, requireAdmin } = require('../middlewares/authMiddleware');
@@ -44,6 +46,34 @@ router.get('/', async (req, res) => {
       console.error(error);
       res.status(500).json({ message: 'Błąd serwera' });
     }
+});
+
+
+router.get('/data', async (req, res) => {
+  const id = req.query.id || 1;
+  try {
+    const product = await Product.findOne({
+      where: { id: id },
+      attributes: ['id', 'title', 'description', 'imageUrl'],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'description', 'creationDate'],
+          include: [
+            {
+              model: User,
+              attributes: ['username']
+            }
+          ]
+        }
+      ]
+    });
+    
+    res.json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Błąd serwera' });
+  }
 });
 
 router.post('/new', verifyToken, async (req, res) => {

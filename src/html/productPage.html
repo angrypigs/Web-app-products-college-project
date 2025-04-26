@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logowanie</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <script src="/scripts/productPage.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <div id="user-name"></div>
+      <h1>Produkt</h1>
+      <div id="home-btn" class="button">Strona główna</div>
+    </div>
+    <div class="main-block" id="product-info">
+      <p id="product-title"></p>
+      <p id="product-desc"></p>
+      <div id="product-comments-box">
+        <h1>Komentarze</h1>
+      </div>
+      <form id="newCommentForm">
+        <h1>Nowy komentarz</h1>
+        <label for="newCommentText">Treść</label>
+        <input type="text" id="newCommentText" required>
+        <button type="submit">Udostępnij</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

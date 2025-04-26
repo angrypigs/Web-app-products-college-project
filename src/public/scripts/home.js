@@ -21,7 +21,13 @@ $(document).ready(function () {
       window.location.href = '/home/new-product';
   });
 
-  $(document).on('click', '.productsListProductRemove', function () {
+  $(document).on('click', '.productsListProduct', function () {
+    const id = $(this).find('.productsListProductRemove').data('id');
+    window.location.href = `/home/product?id=${id}`;
+  });
+
+  $(document).on('click', '.productsListProductRemove', function (e) {
+    e.stopPropagation();
     const id = $(this).data('id');
     if (confirm("Czy na pewno chcesz usunąć ten produkt?")) {
       $.ajax({
@@ -52,12 +58,17 @@ $(document).ready(function () {
     success: function(data) {
       if (data.username) $('#user-name').text(`Zalogowano jako: ${data.username}`);
       is_admin = (data.role === "admin");
+      if (is_admin) $('#header').append('<div id="admin-btn" class="button">Panel admina</div>')
       load_products(is_admin);
     },
     error: function (xhr, status, error) {
       console.error('Błąd w pobieraniu produktów', error);
     }
   });
+
+  $(document).on('click', '#admin-btn', function () {
+    window.location.href = "/admin";
+  })
 
   $(document).on('click', '#filter-refresh', function () {
     load_products(is_admin);
