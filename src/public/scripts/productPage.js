@@ -35,6 +35,7 @@ $(document).ready(function () {
       withCredentials: true
     },
     success: function(data) {
+      console.log(data)
       $('#product-title').text(`Nazwa: ${data.title}`);
       $('#product-desc').text(`Opis: ${data.description}`);
       if (data.imageUrl) $('#product-img').attr('src', data.imageUrl);
@@ -53,6 +54,9 @@ $(document).ready(function () {
         <p>${c.description}</p><i>${c.User.username}, ${formatted}</i>`
         $('#product-comments-box').append(`${comment}</div>`);
       });
+      data.Categories.forEach(ct => {
+        $('#categories-list').append(`<li>${ct.name}</li>`)
+      })
     },
     error: function (xhr, status, error) {
       console.error('Błąd w pobieraniu produktów', error);

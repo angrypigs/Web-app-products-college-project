@@ -6,6 +6,9 @@ let isFirstPage = true;
 let focused_product = -1;
 
 $(document).ready(function () {
+  const session_page = sessionStorage.getItem('currentPage');
+  if (session_page) page = session_page;
+
   $(document).on('click', '#logout-btn', function () {
     $.ajax({
       url: '/home/logout',
@@ -26,7 +29,6 @@ $(document).ready(function () {
   $(document).on('click', '.productsListProductRemove', function (e) {
     e.stopPropagation();
     const id = $(this).parent().data('id');
-    console.log(id)
     if (confirm("Czy na pewno chcesz usunąć ten produkt?")) {
       $.ajax({
         url: '/product/delete',
@@ -132,6 +134,7 @@ $(document).ready(function () {
 
   $(document).on('click', '.productsListProduct', function (e) {
       const id = $(this).data('id');
+      console.log(id)
       window.location.href = `/home/product?id=${id}`;
   });
 
@@ -150,14 +153,16 @@ $(document).ready(function () {
   });
 
   $(document).on('click', '#pagination-left', function () {
-    page = Math.max(page - 1, 1);
+    page = Math.max(parseInt(page) - 1, 1);
     $('#pagination-index').text('' + page);
+    sessionStorage.setItem('currentPage', page);
     load_products(is_admin);
   });
 
   $(document).on('click', '#pagination-right', function () {
-    page += 1;
+    page = parseInt(page) + 1;
     $('#pagination-index').text('' + page);
+    sessionStorage.setItem('currentPage', page);
     load_products(is_admin);
   });
   
@@ -179,6 +184,7 @@ function load_products(is_admin) {
       isFirstPage = res.isFirstPage;
       isLastPage = res.isLastPage;
       console.log(`Is first page: ${isFirstPage}, Is last page: ${isLastPage}`)
+      $('#pagination-index').text('' + page);
       $('#pagination-left').css('display', (isFirstPage) ? 'none' : 'block')
       $('#pagination-right').css('display', (isLastPage) ? 'none' : 'block')
       res.products.forEach(p => {

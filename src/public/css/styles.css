@@ -261,5 +261,7 @@
     display: none;
 }
 
-
+select {
+    max-width: 200px;
+}
 

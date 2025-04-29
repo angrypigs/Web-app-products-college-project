@@ -65,7 +65,7 @@ router.get('/data', async (req, res) => {
   try {
     const product = await Product.findOne({
       where: { 
-        id: id , 
+        id: id, 
         isDeleted: false
       },
       attributes: ['id', 'title', 'description', 'imageUrl'],
@@ -73,6 +73,7 @@ router.get('/data', async (req, res) => {
         {
           model: Comment,
           attributes: ['id', 'description', 'creationDate'],
+          required: false,
           where: {
             isDeleted: false
           },
@@ -82,6 +83,13 @@ router.get('/data', async (req, res) => {
               attributes: ['username', 'id']
             }
           ]
+        },
+        {
+          model: Category,
+          attributes: ['id', 'name'],
+          through: {
+            attributes: []
+          }
         }
       ]
     });
