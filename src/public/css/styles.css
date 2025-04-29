@@ -15,7 +15,7 @@
 
 #logout-btn, #home-btn {
     position: absolute;
-    right: 20px;
+    right: 40px;
 }
 
 #user-name {
@@ -29,8 +29,9 @@
 
 .productsListProduct {
     position: relative;
+    height: 120px;
     min-width: 300px;
-    width: 400px;
+    width: 600px;
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 10px;
@@ -48,6 +49,18 @@
     gap: 20px;
 }
 
+.productsListProductActive {
+    background: #3067a7;
+}
+
+.productsListProduct img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .productsListProductRemove {
     position: absolute;
     right: 10px;
@@ -60,8 +73,21 @@
     background-color: rgba(190, 0, 0, 0.7) !important;
 }
 
-#home-bottom {
+.productsListProductUpdate {
     position: absolute;
+    right: 80px;
+    width: 40px;
+    background-color: rgba(8, 105, 34, 0.7) !important;
+    aspect-ratio: 1 / 1;
+}
+
+.productsListProductUpdate:hover {
+    background-color: rgba(50, 175, 96, 0.7) !important;
+}
+
+#home-bottom {
+    margin-top: auto;
+    margin-bottom: 20px;
     bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -86,22 +112,33 @@
     display: none;
 }
 
-#filter-menu {
+.filter-menu {
     position: absolute;
-    top: 50%;
+    top: 200px;
     right: 0;
-    transform: translateY(-50%);
     width: 20vw;
     height: 60vh;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
     padding: 30px;
     border-bottom: 3px solid rgb(0, 0, 0);
     border-left: 3px solid rgb(0, 0, 0);
     border-top: 3px solid rgb(0, 0, 0);
     background: linear-gradient(90deg, rgb(18, 18, 18), rgb(38, 38, 38));
+}
+
+#edit-product-menu {
+    left: 0;
+    border-left: none;
+    border-right: 3px solid rgb(0, 0, 0);
+    display: none;
+}
+
+#product-img {
+    width: 300px;
+    height: 300px;
 }
 
 #product-comments-box {
@@ -125,8 +162,16 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+.comment-active {
+    background: linear-gradient(90deg, rgba(19, 8, 124, 0.5),rgba(114, 107, 171, 0.5));
+}
+
 .comment p {
     text-align: center;
+}
+
+#newCommentForm {
+    margin-bottom: 20px;
 }
 
 #product-info > p {
@@ -189,3 +234,32 @@
     width: 40px;
     height: 40px;
 }
+
+#newProductCategoryPicker {
+    width: 200px;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#newProductCategoryPicker label {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+    gap: 10px;
+}
+
+#newProductCategoryPicker input[type=checkbox] {
+    height: 40px !important;
+    width: 40px !important;
+}
+
+#change-comment-menu {
+    display: none;
+}
+
+
+

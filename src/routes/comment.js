@@ -26,19 +26,50 @@ router.post('/new', verifyToken, async (req, res) => {
 });
 
 router.post('/delete', verifyToken, async (req, res) => {
+  const { commentId } = req.body;
+  const userId = req.user.id;
+  const userRole = req.user.role;
+
   try {
-    const comment = await Product.findByPk(req.body.id);
-    if (!comment) return res.json({ success: false, message: 'Komentarz nie istnieje' });
-    if (comment.id === req.user.id) {
-        comment.isDeleted = true;
-        await comment.save();
-        res.json({ success: true, message: 'Produkt usunięty' });
-    } else {
-        res.json({ success: false, message: 'Komentarz nie należy do użytkownika' });
+    const comment = await Comment.findByPk(commentId);
+    if (!comment) {
+      return res.status(404).json({ message: 'Komentarz nie znaleziony' });
     }
-  } catch (err) {
-    console.error(err);
-    res.json({ success: false, message: 'Błąd serwera' });
+    if (comment.creatorUserId !== userId && userRole !== 'admin') {
+      return res.status(403).json({ message: 'Brak uprawnień' });
+    }
+
+    comment.isDeleted = true;
+    await comment.save();
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Błąd serwera' });
+  }
+});
+
+router.post('/update', verifyToken, async (req, res) => {
+  const { commentId, newDescription } = req.body;
+  const userId = req.user.id;
+  const userRole = req.user.role;
+
+  try {
+    const comment = await Comment.findByPk(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ message: 'Komentarz nie znaleziony' });
+    }
+
+    if (comment.creatorUserId !== userId && userRole !== 'admin') {
+      return res.status(403).json({ message: 'Brak uprawnień' });
+    }
+
+    comment.description = newDescription;
+    await comment.save();
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Błąd serwera' });
   }
 });
 

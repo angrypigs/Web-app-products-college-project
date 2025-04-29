@@ -66,9 +66,10 @@ form {
     align-items: center;
 }
 
-form label, form input {
+form > label, form > input {
     display: block;
     text-align: center;
+    font-size: 20px;
     margin-bottom: 8px;
     min-width: 20vw;
 }

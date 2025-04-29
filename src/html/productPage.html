@@ -19,6 +19,7 @@
     <div class="main-block" id="product-info">
       <p id="product-title"></p>
       <p id="product-desc"></p>
+      <img id="product-img" alt="">
       <div id="product-comments-box">
         <h1>Komentarze</h1>
       </div>
@@ -28,6 +29,14 @@
         <input type="text" id="newCommentText" required>
         <button type="submit">Udostępnij</button>
       </form>
+      <div class="filter-menu" id="change-comment-menu">
+        <h3>Zmiana treści komentarza</h3>
+        <label for="change-comment-name">Nowa treść</label>
+        <input type="text" id="change-comment-name">
+        <div id="change-comment-btn" class="button">Zmień</div>
+        <h3>Usuwanie komentarza</h3>
+        <div id="delete-comment-btn" class="button">Usuń</div>
+      </div>
     </div>
   </div>
 </body>

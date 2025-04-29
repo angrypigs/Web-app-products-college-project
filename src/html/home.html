@@ -16,12 +16,23 @@
       <h1>Strona domowa</h1>
       <div id="logout-btn" class="button">Wyloguj</div>
     </div>
-    <div id="filter-menu">
-      <div>
-        <label for="filter-name">Filtruj po nazwie</label>
-        <input type="text" id="filter-name">
-      </div>
+    <div class="filter-menu">
+      <label for="filter-name">Filtruj po nazwie</label>
+      <input type="text" id="filter-name">
+      <label for="filter-category">Wybierz kategorię do filtrowania</label>
+      <select id="filter-category">
+        <option value="">Wył.</option>
+      </select>
       <div id="filter-refresh" class="button">Odśwież</div>
+    </div>
+    <div class="filter-menu" id="edit-product-menu">
+      <label for="edit-product-title">Nazwa produktu</label>
+      <input type="text" id="edit-product-title" name="title" required>
+      <label for="edit-product-desc">Opis produktu</label>
+      <input type="text" id="edit-product-desc" name="desc">
+      <label for="edit-product-img">Zdjęcie</label>
+      <input type="text" id="edit-product-img" name="img">
+      <div id="edit-product-btn" class="button">Zaktualizuj produkt</div>
     </div>
     <div class="main-block">
       <div id="products-list">
